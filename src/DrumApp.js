@@ -44,9 +44,7 @@ class DrumApp extends Component {
     }
     
     handleClick(e){
-            // this.play();
             let audio= e.target.childNodes[0];
-            //console.log(audio[0]);
             audio.play();
             this.setState({
                 currentSound: `${audio.id} note playing!`
@@ -54,15 +52,15 @@ class DrumApp extends Component {
     }
     
     render(){
-        const drumPads=["Q", "W", "E", "A", "S", "D", "Z", "X", "C"].map((key,index)=>{
+       const drumPads=["Q", "W", "E", "A", "S", "D", "Z", "X", "C"].map((key,index)=>{
             let source = `${key.toLowerCase()}_file`;
-          
-            return <DrumPad text={key} key={index+" "+key}
+            
+            return <DrumPad text={key} key={index+" "+key} 
                 source={this.state.sources[source]} onClick={this.handleClick} />
         });
         return <main id="drum-machine">
-            {drumPads}
-            <div id="display">{this.state.currentSound}</div>
+            <div id="display">{this.state.currentSound || "Silence"}</div>
+            <section id="pads">{drumPads}</section>          
         </main>
     }
 }
