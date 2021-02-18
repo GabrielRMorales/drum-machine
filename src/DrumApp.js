@@ -47,7 +47,7 @@ class DrumApp extends Component {
             let audio= e.target.childNodes[0];
             audio.play();
             this.setState({
-                currentSound: `${audio.id} note playing!`
+                currentSound: audio.id
             });
     }
     
@@ -59,7 +59,7 @@ class DrumApp extends Component {
                 source={this.state.sources[source]} onClick={this.handleClick} />
         });
         return <main id="drum-machine">
-            <div id="display">{this.state.currentSound || "Silence"}</div>
+            <div id="display">Now playing: {this.state.currentSound || "Silence"}</div>
             <section id="pads">{drumPads}</section>          
         </main>
     }
